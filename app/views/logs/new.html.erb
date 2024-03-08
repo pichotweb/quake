@@ -1,0 +1,14 @@
+<% content_for :title, "Upload Log" %>
+
+<div class="w-full max-w-screen-lg mx-auto p-6">
+  <%= form_with(url: logs_path, method: :post, local: true) do |form| %>
+    <div class="w-full">
+      <%= form.label :log_content, class: "block text-sm font-medium text-gray-300" %>
+      <%= form.file_field :log_file, class: "mt-1 p-2 w-full bg-gray-700 rounded-md" %>
+    </div>
+
+    <div class="flex items-center">
+      <%= form.submit "Enviar Log", class: "bg-green-500 text-white px-4 py-2 rounded-md" %>
+    </div>
+  <% end %>
+</div>

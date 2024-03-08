@@ -3,6 +3,7 @@ class CreateGames < ActiveRecord::Migration[7.1]
     create_table :games do |t|
       t.integer :kills_count
       t.integer :players_count
+      t.json :params, :json, default: {}
 
       t.timestamps
     end unless table_exists? :games

@@ -1,7 +1,7 @@
 class CreateGameEvents < ActiveRecord::Migration[7.1]
   def up
     create_table :game_events do |t|
-      t.integer :type
+      t.integer :event_type
       t.string :description
       t.references :game, null: false, foreign_key: true
 

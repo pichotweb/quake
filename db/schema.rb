@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema[7.1].define(version: 2024_03_08_025248) do
   create_table "game_events", force: :cascade do |t|
-    t.integer "type"
+    t.integer "event_type"
     t.string "description"
     t.integer "game_id", null: false
     t.datetime "created_at", null: false
@@ -23,12 +23,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_08_025248) do
   create_table "games", force: :cascade do |t|
     t.integer "kills_count"
     t.integer "players_count"
+    t.json "params", default: {}
+    t.json "json", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "kills", force: :cascade do |t|
-    t.integer "death_type"
+    t.integer "death_type_id"
     t.integer "killer_id"
     t.integer "victim_id", null: false
     t.integer "game_id", null: false
@@ -41,12 +43,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_08_025248) do
 
   create_table "players", force: :cascade do |t|
     t.string "name"
+    t.integer "session_id"
     t.string "team"
-    t.integer "kill_score", default: 0
+    t.integer "score", default: 0
     t.integer "game_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_players_on_game_id"
+    t.index ["session_id", "game_id"], name: "index_players_on_session_id_and_game_id", unique: true
   end
 
   add_foreign_key "game_events", "games"

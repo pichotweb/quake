@@ -11,5 +11,6 @@ class Game < ApplicationRecord
     death_types = kills.group(:death_type).count.transform_keys { |key| DeathType.names[key] }
     { death_types: death_types }
   end
+
 end
 

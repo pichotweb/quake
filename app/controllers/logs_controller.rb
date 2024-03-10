@@ -10,14 +10,19 @@ class LogsController < ApplicationController
 
       log_file = params[:log_file]
 
-      # begin
+      begin
         Log.parse_file(log_file)
         flash[:success] = "The file was succesfully received!"
-      # rescue StandardError => e
-      #   flash[:error] = "There was an error parsing file!"
-      # end
+        return redirect_to root_path
+      rescue StandardError => e
+        flash[:error] = "There was an error parsing file! #{e.message}"
+      end
     end
 
     redirect_to new_log_path
+  end
+
+  def show
+    @game = Game.find params[:id]
   end
 end

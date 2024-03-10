@@ -13,6 +13,7 @@
 ActiveRecord::Schema[7.1].define(version: 2024_03_08_025248) do
   create_table "game_events", force: :cascade do |t|
     t.integer "event_type"
+    t.string "time"
     t.string "description"
     t.integer "game_id", null: false
     t.datetime "created_at", null: false
@@ -24,7 +25,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_08_025248) do
     t.integer "kills_count"
     t.integer "players_count"
     t.json "params", default: {}
-    t.json "json", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

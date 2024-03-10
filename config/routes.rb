@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "dashboards#index"
   resources :logs, only: [:new, :create]
+  resources :games, only: [:show, :destroy]
+
+  get '/reports/generate/:type(/:game)', to: 'reports#generate', as: :report_generate
   get '/credits', to: 'credits#index', as: :credits
 end

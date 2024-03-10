@@ -1,0 +1,162 @@
+<% content_for :title, "Log Details" %>
+
+
+<div class="flex flex-row flex-wrap flex-grow mt-2">
+
+    <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+        <!--Table Card-->
+        <div class="bg-white border-transparent rounded-lg shadow-xl">
+            <div class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
+                <h2 class="font-bold uppercase text-gray-600">Player list</h2>
+            </div>
+            <div class="p-5 md:min-h-[252px] sm:min-h-[156px]">
+                <table class="w-full p-5 text-gray-700">
+                    <thead>
+                    <tr>
+                        <th class="text-left text-blue-900">Name</th>
+                        <th class="text-left text-blue-900">Team</th>
+                        <th class="text-left text-blue-900">Score</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <% @game.players.each do |player| %>
+                        <tr>
+                            <td><%= player.name %></td>
+                            <td class="text-<%= player.team_label.downcase %>-900" ><%= player.team_label %></td>
+                            <td><%= player.score %></td>
+                        </tr>
+                    <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--/table Card-->
+    </div>
+
+    <!-- Kills per player -->
+    <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+        <!--Graph Card-->
+        <div class="bg-white border-transparent rounded-lg shadow-xl">
+            <div class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
+                <h2 class="font-bold uppercase text-gray-600">Kills per player</h2>
+            </div>
+            <div class="p-5">
+                <canvas id="chartjs-1" class="chartjs" width="undefined" height="undefined"></canvas>
+                <script>
+                    new Chart(document.getElementById("chartjs-1"), {
+                        "type": "bar",
+                        "data": {
+                            "labels": ["January", "February", "March", "April", "May", "June", "July"],
+                            "datasets": [{
+                                "label": "Likes",
+                                "data": [65, 59, 80, 81, 56, 55, 40],
+                                "fill": false,
+                                "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"],
+                                "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"],
+                                "borderWidth": 1
+                            }]
+                        },
+                        "options": {
+                            "scales": {
+                                "yAxes": [{
+                                    "ticks": {
+                                        "beginAtZero": true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+        <!--/Graph Card-->
+    </div>
+
+    <!-- Best Weapons -->
+    <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+        <!--Graph Card-->
+        <div class="bg-white border-transparent rounded-lg shadow-xl">
+            <div class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
+                <h5 class="font-bold uppercase text-gray-600">Best Weapons</h5>
+            </div>
+            <div class="p-5"><canvas id="chartjs-4" class="chartjs" width="undefined" height="undefined"></canvas>
+                <script>
+                    new Chart(document.getElementById("chartjs-4"), {
+                        "type": "doughnut",
+                        "data": {
+                            "labels": ["P1", "P2", "P3"],
+                            "datasets": [{
+                                "label": "Issues",
+                                "data": [300, 50, 100],
+                                "backgroundColor": ["rgb(255, 99, 132)", "rgb(54, 162, 235)", "rgb(255, 205, 86)"]
+                            }]
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+        <!--/Graph Card-->
+    </div>
+
+</div>
+
+<div>
+    <h2 class="text-2xl font-bold mb-4">Game Logs</h2>
+
+    <div class="mb-4">
+        <input type="text" class="border p-2 w-full" placeholder="Search for events...">
+    </div>
+
+    <div class=" border p-4 bg-white">
+        <% @game.game_events.each do |event| %>
+            <div class="mb-2 p-3 rounded-md bg-grey-500">
+                <span class="text-black-600">
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 mr-2 flex items-center justify-center">
+                            <i class="fas <%= event.type_icon %> text-xs" style="color: <%= event.type_color %>" ></i>
+                        </div>
+                        <span>[<%= event.time %>]</span>
+                        <span class="ml-2">[<%= event.type_label %>]: [<%= event.description %>]</span>
+                    </div>
+                </span>
+            </div>
+
+        <% end %>
+
+    </div>
+</div>
+
+<!-- Script for initializing the Chart.js graph -->
+<script>
+    // Replace the following with your Chart.js configuration
+    var ctx = document.getElementById('gameStatisticsChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Label 1', 'Label 2', 'Label 3'],
+            datasets: [{
+                label: 'Example Dataset',
+                data: [12, 19, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>

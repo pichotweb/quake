@@ -1,5 +1,5 @@
 
-`# Quake 3 Arena Parser - Rails Project
+# Quake 3 Arena Parser
 
 ## Description
 Quake 3 Arena Parser is a Rails project that analyzes and displays game statistics for Quake 3 Arena matches. Developed using Ruby 3.2.3 ans Rails 7.
@@ -12,7 +12,6 @@ Make sure to have Ruby 3.2.3 installed on your machine before proceeding.
 ```bash
 git clone https://github.com/pichotweb/quake-parser
 ``` 
-
 2.  Navigate to the project directory:
 ```bash
 cd quake-parser 
@@ -21,8 +20,6 @@ cd quake-parser
 ```bash
 bundle install 
 ```
-
-
 
 ## Configuration
 
@@ -41,9 +38,7 @@ rails db:migrate
 ## Execution
 
 To start the development server, use the following command:
-
 ```bash
 ./bin/dev
 ```
-
 The server will be started at http://localhost:3000 by default.

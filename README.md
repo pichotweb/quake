@@ -1,24 +1,49 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+`# Quake 3 Arena Parser - Rails Project
 
-Things you may want to cover:
+## Description
+Quake 3 Arena Parser is a Rails project that analyzes and displays game statistics for Quake 3 Arena matches. Developed using Ruby 3.2.3 ans Rails 7.
 
-* Ruby version
+## Requirements
+Make sure to have Ruby 3.2.3 installed on your machine before proceeding.
 
-* System dependencies
+## Installation
+1. Clone this repository to your local machine:
+```bash
+git clone https://github.com/pichotweb/quake-parser
+``` 
 
-* Configuration
+2.  Navigate to the project directory:
+```bash
+cd quake-parser 
+```     
+3.   Install dependencies using Bundler:
+```bash
+bundle install 
+```
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
+## Configuration
 
-* Services (job queues, cache servers, search engines, etc.)
+1.  The project uses Sqlite3 as default DB, it can be changed at:
+    
+```bash
+cp config/database.yml.example config/database.yml
+```
+2.   Configure the database:
 
-* Deployment instructions
+```bash
+rails db:create
+rails db:migrate
+```
 
-* ...
+## Execution
+
+To start the development server, use the following command:
+
+```bash
+./bin/dev
+```
+
+The server will be started at http://localhost:3000 by default.

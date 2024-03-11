@@ -45,7 +45,7 @@ The server will be started at http://localhost:3000 by default.
 
 ## Log
 
-For tests purposes, a log file can foun at:
+For tests purposes, a log file can be found at:
 ```bash
 test/fixtures/files/log.txt
 ```

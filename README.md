@@ -26,7 +26,7 @@ bundle install
 1.  The project uses Sqlite3 as default DB, it can be changed at:
     
 ```bash
-cp config/database.yml.example config/database.yml
+config/database.yml
 ```
 2.   Configure the database:
 

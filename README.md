@@ -37,7 +37,7 @@ rails db:migrate
 
 ## Execution
 
-To start the development server, use the following command:
+To start the development server, use the following command:0
 ```bash
 ./bin/dev
 ```

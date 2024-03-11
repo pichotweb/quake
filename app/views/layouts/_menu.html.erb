@@ -26,10 +26,17 @@
               Reports
             </span>
           <% end %>
-          <ul class="hidden md:block mt-2 space-y-2">
+          <ul class="hidden md:block mt-2 space-y-2 pl-3">
             <li>
               <%= link_to(report_generate_path(:all_matches_info), target: '_blank', class: "text-white no-underline hover:text-white") do %>
+                <i class="fa fa-caret-right pr-0 md:pr-3 text-yellow-600"></i>
                 All game data
+              <% end %>
+            </li>
+            <li>
+              <%= link_to(report_generate_path(:all_matches_death_cause), target: '_blank', class: "text-white no-underline hover:text-white") do %>
+                <i class="fa fa-caret-right pr-0 md:pr-3 text-yellow-600"></i>
+                Death cause
               <% end %>
             </li>
           </ul>

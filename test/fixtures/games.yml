@@ -1,9 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  kills_count: 1
-  players_count: 1
+  kills_count: 3
+  players_count: 2
+  params: "{\"capturelimit\":\"8\",\"g_maxGameClients\":\"0\",\"timelimit\":\"15\",\"fraglimit\":\"20\",\"dmflags\":\"0\",\"bot_minplayers\":\"0\",\"sv_allowDownload\":\"0\",\"sv_maxclients\":\"16\",\"sv_privateClients\":\"2\",\"g_gametype\":\"0\",\"sv_hostname\":\"Code Miner Server\",\"sv_minRate\":\"0\",\"sv_maxRate\":\"10000\",\"sv_minPing\":\"0\",\"sv_maxPing\":\"0\",\"sv_floodProtect\":\"1\",\"version\":\"ioq3 1.36 linux-x86_64 Apr 12 2009\",\"protocol\":\"68\",\"mapname\":\"q3dm17\",\"gamename\":\"baseq3\",\"g_needpass\":\"0\\n\"}"
 
 two:
-  kills_count: 1
-  players_count: 1
+  kills_count: 3
+  players_count: 2
+  params: "{\"capturelimit\":\"8\",\"g_maxGameClients\":\"0\",\"timelimit\":\"15\",\"fraglimit\":\"20\",\"dmflags\":\"0\",\"bot_minplayers\":\"0\",\"sv_allowDownload\":\"0\",\"sv_maxclients\":\"16\",\"sv_privateClients\":\"2\",\"g_gametype\":\"0\",\"sv_hostname\":\"Code Miner Server\",\"sv_minRate\":\"0\",\"sv_maxRate\":\"10000\",\"sv_minPing\":\"0\",\"sv_maxPing\":\"0\",\"sv_floodProtect\":\"1\",\"version\":\"ioq3 1.36 linux-x86_64 Apr 12 2009\",\"protocol\":\"68\",\"mapname\":\"q3dm17\",\"gamename\":\"baseq3\",\"g_needpass\":\"0\\n\"}"

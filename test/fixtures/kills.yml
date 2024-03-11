@@ -2,10 +2,36 @@
 
 one:
   killer: one
-  victim: one
-  death_type: MyString
+  victim: two
+  game: one
+  death_type_id: <%= DeathType::MOD_SHOTGUN %>
 
 two:
   killer: two
   victim: two
-  death_type: MyString
+  game: one
+  death_type_id: <%= DeathType::MOD_RAILGUN %>
+
+three:
+  killer: one
+  victim: two
+  game: one
+  death_type_id: <%= DeathType::MOD_TARGET_LASER %>
+
+four:
+  killer: two
+  victim: two
+  game: two
+  death_type_id: <%= DeathType::MOD_PLASMA %>
+
+five:
+  killer: one
+  victim: two
+  game: two
+  death_type_id: <%= DeathType::MOD_RAILGUN %>
+
+six:
+  victim: two
+  game: two
+  death_type_id: <%= DeathType::MOD_FALLING %>
+

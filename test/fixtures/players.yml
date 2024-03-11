@@ -1,11 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  team: MyString
+  session_id: '1'
   game: one
+  team: 'g_blueteam'
 
 two:
-  name: MyString
-  team: MyString
+  session_id: '2'
+  game: one
+  team: 'g_redteam'
+
+three:
+  session_id: '1'
   game: two
+  team: 'g_blueteam'
+
+four:
+  session_id: '2'
+  game: two
+  team: 'g_redteam'

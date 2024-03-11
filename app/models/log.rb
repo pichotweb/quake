@@ -20,14 +20,18 @@ class Log < ApplicationRecord
             # Should looks for game init time, due to crashs not triggering Shuttdown event
             if (time != last_time_started_game) || current_game.nil?
               # Save last crashed game
-              current_game.save unless current_game.nil?
-              current_game = Game.new(params: game_params.to_json)
+              unless current_game.nil?
+                current_game.is_shuting_down = true
+                current_game.save 
+              end
+
+              current_game = Game.new(params: game_params.to_json, game_type_id: game_params['g_gametype'])
               
               # Store players ids to avoid querying the db
               last_time_started_game = time
             end
 
-            GameEvent.add_to current_game, GameEventType::INITGAME, time, game_params
+            GameEvent.add_to current_game, GameEventType::INITGAME, time, game_params[:g_gametype], game_params
 
           when /ClientBegin: (\d+)/
             player_id = $1
@@ -104,6 +108,8 @@ class Log < ApplicationRecord
           when /ShutdownGame:/
             if current_game.present?
               GameEvent.add_to current_game, GameEventType::SHUTDOWNGAME, time
+
+              current_game.is_shuting_down = true
 
               if current_game.save
                 current_game = nil

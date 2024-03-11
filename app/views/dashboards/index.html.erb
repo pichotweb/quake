@@ -63,13 +63,12 @@
         <%= link_to game_path(game) do %>
             <div class="relative bg-gradient-to-b from-blue-200 to-blue-100 border-b-4 border-blue-600 rounded-lg shadow-xl p-5 cursor-pointer">
 
-                <!-- TODO - card color per game type -->
                 <div class="flex flex-row items-center">
                     <div class="flex-shrink pr-4">
-                        <div class="rounded-full p-5 bg-blue-600"><i class="fas fa-gamepad fa-2x fa-inverse"></i></div>
+                        <div class="rounded-full p-5 bg-blue-600"><i class="fas <%= game.type_icon %> fa-2x fa-inverse" style="color: <%= game.type_color || 'blue' %>"></i></div>
                     </div>
                     <div class="flex-1 text-right md:text-center">
-                        <h2 class="font-bold uppercase text-gray-600">Game Stats</h2>
+                        <h2 class="font-bold uppercase text-gray-600"><%= game.type_label %></h2>
                         <p class="font-bold text-xl">Players: <%= game.players_count %></p>
                         <p class="font-bold text-xl">Total kills: <%= game.kills_count %></p>
                     </div>

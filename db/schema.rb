@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_08_025248) do
   create_table "games", force: :cascade do |t|
     t.integer "kills_count"
     t.integer "players_count"
+    t.integer "game_type_id"
     t.json "params", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

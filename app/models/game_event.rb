@@ -17,8 +17,11 @@ class GameEvent < ApplicationRecord
   def set_description time, *args
     self.time = time
     self.description = case self.event_type
-      # [game_params]
-      when GameEventType::INITGAME then "A Game session has started! game_params: #{args[0].to_s}"
+      # [game_type, game_params]
+      when GameEventType::INITGAME
+        type_label = args[0].nil? ? 'Uknown game type' : GameType.names[args[0]]
+        
+        "A #{type_label} session has started! game_params: #{args[1].to_s}"
       # [player_id]
       when GameEventType::CLIENTBEGIN
         player_id = args[0]

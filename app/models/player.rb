@@ -5,13 +5,10 @@ class Player < ApplicationRecord
 
   validates_uniqueness_of :session_id, scope: :game_id
 
-  # TODO - bring score from exit game event and calculate on top of it to ensure that point per kills are respected
-  def calculate_kill_score
-    player_kills = self.kills.count
-    deaths_to_players = self.deaths.where.not(killer_id: nil).count
-    world_deaths = self.deaths.where(killer_id: nil).count
-
-    self.score = (player_kills-deaths_to_players) - world_deaths
+  # TODO - bring score from exit game event
+  # and calculate on top of it to ensure that point per kills are respected
+  def update_kill_score
+    self.score = (self.kills.count-self.deaths.count)
   end
 
   def team_label
@@ -29,13 +26,6 @@ class Player < ApplicationRecord
 
     player = find_in_memory(game, data[:session_id]) || game.players.build(data)
     player.attributes = data
-
-    Rails.logger.debug { "PLAYERINSIDE:: DATA #{data.inspect}"}
-    Rails.logger.debug { "PLAYERINSIDE:: players: #{game.players.length}"}
-    
-    game.players.each do |player|
-      Rails.logger.debug { "PLAYERINSIDE:: ID: #{player.session_id} | NAME: #{player.name} | TEAM: #{player.team} "}
-    end
 
     player
   end

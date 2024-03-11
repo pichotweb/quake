@@ -35,7 +35,7 @@ class GameEventType < ApplicationRecord
       ITEM => 'fa-star',
       KILL => 'fa-skull',
       CLIENTDISCONNECT => 'fa-user-slash',
-      EXIT => 'fa-circle-info',
+      EXIT => 'fa-server',
       SHUTDOWNGAME => 'fa-server',
       CHAT_INTERACTION => 'fa-comments'
     }
@@ -44,13 +44,13 @@ class GameEventType < ApplicationRecord
   def self.colors
     {
       INITGAME => '#00A000',
-      CLIENTBEGIN => '#0000E5',
+      CLIENTBEGIN => '#1e6618',
       CLIENTCONNECT => '#5C5A99',
       CLIENTUSERINFOCHANGED => '#D2691E',
       ITEM => '#8B8B00',
       KILL => '#D95353',
       CLIENTDISCONNECT => '#D98797',
-      EXIT => '#A0522D',
+      EXIT => '#c4291b',
       SHUTDOWNGAME => '#A9A9A9',
       CHAT_INTERACTION => '#00CDCD'               
     }

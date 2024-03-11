@@ -3,14 +3,15 @@
 <div class="mx-auto p-6">
   <%= form_with(url: logs_path, method: :post, local: true) do |form| %>
     <div class="w-full">
-      <%= form.label :log_content, class: "block text-sm font-medium text-gray-300" %>
-      <%= form.file_field :log_file, class: "mt-1 p-2 w-full bg-gray-700 rounded-md" %>
+      <%= label_tag :log_content, 'Select the log file:', class: "block text-sm font-medium text-black-300" %>
+      <%= form.file_field :log_file, class: "mt-1 p-2 w-full bg-gray-700 rounded-md text-gray-300 focus:outline-none focus:ring focus:border-blue-300" %>
     </div>
 
     <br />
 
     <div class="flex items-center cursor-pointer">
-      <%= form.submit "Enviar Log", class: "bg-green-500 text-white px-4 py-2 rounded-md" %>
+      <%= form.submit "Enviar Log", class: "bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:border-green-300" %>
     </div>
   <% end %>
 </div>
+
